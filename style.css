@@ -36,13 +36,15 @@ body {
   top: 0;
   position: sticky;
   -color: var(--default-color);
+  background: var(--default-color);
   margin-bottom: 2rem;
   border-bottom: 0.3rem solid var(--primary-color);
-  z-index: 2;
+  z-index: 3;
 }
 .logo {
   height: 6rem;
   margin: 0rem 0.5rem;
+  cursor: pointer;
 }
 
 .form-control {
@@ -114,15 +116,18 @@ body {
 
 /*----------SIDE MENU----------*/
 .header {
-  height: 100vh;
+  min-height: 60rem;
+  max-height: 79vh;
+  display: flex;
 }
 .side-menu {
-  height: 79%;
+  min-height: 60rem;
+  max-height: 79vh;
   width: 17%;
   font-size: 1.4rem;
   float: left;
   z-index: 2;
-  background: var(--text-gray-color-lighter);
+  background: var(--primary-color-lighter);
 }
 .side-menu ul {
   margin-left: 1rem;
@@ -142,14 +147,14 @@ body {
   position: absolute;
   top: 9.8rem;
   left: calc(17% - 1rem);
-  z-index: 10;
+  z-index: 2;
 }
 .side-menu ul li:hover ul {
   display: block;
   height: 40rem;
   padding: 0 10rem 1rem 1rem;
   position: fixed;
-  background: var(--text-gray-color-lighter);
+  background: var(--primary-color-lighter);
   box-shadow: 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.5);
 }
 .fa-angle-right {
@@ -164,10 +169,119 @@ body {
   color: var(--primary-color);
   position: relative;
   align-self: center;
+  cursor: pointer;
 }
 
 .fa-solid.hide-desktop {
   display: none;
+}
+/*----------SLIDER----------*/
+.slider {
+  height: 100% !important;
+  width: 83%;
+  /* margin-left: 17%; */
+  padding: 0 1rem;
+  /* border: 1px solid red; */
+  /* overflow: hidden; */
+}
+.slider img {
+  min-height: 60rem;
+  max-height: 79vh;
+  aspect-ratio: 1920/1080;
+  /* max-height: 79%; */
+  width: 100% !important;
+}
+.carousel {
+  box-shadow: 0.1rem 0.1rem 0.4rem 0.1rem rgba(0, 0, 0, 0.5);
+}
+.carousel-indicators {
+  z-index: 1 !important;
+}
+/*----------FEATURED CATEGORIES----------*/
+.featured-categories {
+  margin: 5rem 0;
+}
+.featured-categories img {
+  width: 100%;
+  padding: 2rem 0;
+  transition: 1s;
+  cursor: pointer;
+}
+.featured-categories img:hover {
+  transform: scale(1.1);
+}
+/*----------ON SALE PRODUCTS----------*/
+
+.title-box {
+  background-color: var(--primary-color);
+  color: var(--default-color);
+  width: 18rem;
+  padding: 0.4rem 1rem;
+  height: 4rem;
+  margin-bottom: 3rem;
+  display: flex;
+}
+.title-box::after {
+  content: '';
+  border-top: 4rem solid var(--primary-color);
+  border-right: 5rem solid transparent;
+  position: absolute;
+  display: flex;
+  margin-top: -0.4rem;
+  margin-left: 17rem;
+}
+.title-box h2 {
+  font-size: 2.4rem !important;
+}
+
+/*----------PRODUCT TOP----------*/
+.product-top {
+  position: relative;
+}
+.product-top img {
+  width: 100%;
+}
+.overlay-right {
+  display: block;
+  opacity: 0;
+  position: absolute;
+  top: 10%;
+  margin-left: 0;
+  width: 7rem;
+}
+.product-top:hover .overlay-right {
+  opacity: 1;
+  margin-left: 5%;
+  transition: 0.5s;
+}
+.overlay-right .fa-solid {
+  cursor: pointer;
+  background: var(--default-color);
+  color: #000;
+  height: 3.5rem;
+  width: 3.5rem;
+  font-size: 2rem;
+  padding: 0.7rem;
+  margin: 5% 0;
+}
+.overlay-right .btn-secondary {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+/*----------PRODUCT BOTTOM----------*/
+.product-bottom .fa-solid,
+.product-bottom .fa-regular {
+  color: var(--primary-color);
+  font-size: 1rem;
+}
+.product-bottom h3 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.product-bottom h5 {
+  font-size: 1.5rem;
+  padding-bottom: 1rem;
 }
 
 @media only screen and (max-width: 980px) {
@@ -191,7 +305,7 @@ body {
     width: 100%;
   }
   /*----------SIDE MENU----------*/
-  .side-menu {
+  /* .side-menu {
     width: 34%;
     z-index: 20;
     top: 14.4rem;
@@ -202,8 +316,20 @@ body {
     top: 14.4rem;
     left: calc(34% - 1rem);
   }
-}
-@media only screen and (max-width: 600px) {
+  /*----------SLIDER----------*/
+  /* .slider {
+    position: fixed;
+    top: 14.4rem;
+    margin: 0;
+    left: calc(34%);
+    width: 66%;
+    padding: 0;
+    z-index: 1;
+    margin-left: 34%;
+  } */
+
+  /* } */
+  /* @media only screen and (max-width: 600px) { */
   .fa-solid.hide-desktop {
     display: block;
   }
@@ -213,18 +339,28 @@ body {
   .hide-side-menu {
     display: none;
   }
-}
-@media only screen and (max-width: 450px) {
+  .slider {
+    position: absolute;
+    top: 15.4rem;
+    margin: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    z-index: 1;
+    /* margin-left: 34%; */
+  }
+  /* } */
+  /* @media only screen and (max-width: 450px) { */
   /*----------SIDE MENU----------*/
   .side-menu {
     width: 40%;
-    z-index: 20;
-    top: 14.4rem;
-    position: fixed;
+    z-index: 2;
+    top: 15.4rem;
+    position: absolute;
     font-size: 1.2rem;
   }
   .side-menu ul li ul {
-    top: 14.4rem;
+    top: 15.4rem;
     left: calc(40% - 1rem);
   }
 }
