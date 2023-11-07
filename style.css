@@ -1,0 +1,230 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --body-color: #f1f3f4;
+  --default-color: #fff;
+
+  --original-color: #e40205;
+  --primary-color-lighter: #fce5e6;
+  --primary-color-light: #f4999b;
+  --primary-color: #ee6769;
+  --primary-color-dark: #e61b1d;
+  --primary-color-darker: #880103;
+
+  --text-color: #440001;
+  --text-color-dark: #2d0001;
+  --text-color-darker: #160000;
+
+  --text-gray-color-lighter: #d0cccc;
+  --text-gray-color-light: #b2b2b2;
+  --text-gray-color: #8a7f7f;
+  --text-gray-color-dark: #5b4c4c;
+  --text-gray-color-darker: #443232;
+
+  font-size: 62.5%;
+}
+body {
+  -color: var(--body-color);
+  font-family: sans-serif;
+  font-size: 1.6rem !important;
+}
+.top-nav-bar {
+  height: 7.7rem;
+  top: 0;
+  position: sticky;
+  -color: var(--default-color);
+  margin-bottom: 2rem;
+  border-bottom: 0.3rem solid var(--primary-color);
+  z-index: 2;
+}
+.logo {
+  height: 6rem;
+  margin: 0rem 0.5rem;
+}
+
+.form-control {
+  margin-top: 0.9rem;
+  margin-left: 3rem;
+  border: 0.1rem solid var(--primary-color) !important;
+  border-top-left-radius: 3rem !important;
+  border-bottom-left-radius: 3rem !important;
+  border-top-right-radius: 0rem !important;
+  border-bottom-right-radius: 0rem !important;
+  box-shadow: none !important;
+  padding: 0rem 2rem !important;
+  font-size: 1.6rem !important;
+}
+
+.input-group-text {
+  background-color: var(--primary-color) !important;
+  border: 0.1rem solid var(--primary-color) !important;
+  margin: 0.85rem 1rem 0rem 0rem;
+  border-top-left-radius: 0rem !important;
+  border-bottom-left-radius: 0rem !important;
+  border-top-right-radius: 3rem !important;
+  border-bottom-right-radius: 3rem !important;
+  cursor: pointer;
+  font-size: 1.4rem !important;
+}
+.search-box {
+  display: inline-flex;
+  width: 60%;
+}
+.fa-magnifying-glass {
+  color: var(--default-color);
+  padding: 0.3rem 0.8rem;
+}
+
+.menu-bar {
+  width: 40%;
+  height: 7.7rem;
+  float: right;
+}
+.menu-bar ul {
+  display: inline-flex;
+  float: right;
+  gap: 0.1rem;
+}
+.menu-bar ul li {
+  list-style: none;
+  padding: 0rem 4.5rem;
+  height: 7.7rem;
+  text-align: center;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.menu-bar ul li:hover {
+  background-color: var(--primary-color-dark);
+}
+.menu-bar ul li a {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--default-color);
+  text-decoration: none;
+}
+.fa-basket-shopping {
+  margin-right: 0.5rem;
+}
+
+/*----------SIDE MENU----------*/
+.header {
+  height: 100vh;
+}
+.side-menu {
+  height: 79%;
+  width: 17%;
+  font-size: 1.4rem;
+  float: left;
+  z-index: 2;
+  background: var(--text-gray-color-lighter);
+}
+.side-menu ul {
+  margin-left: 1rem;
+  position: relative;
+}
+.side-menu ul li {
+  list-style-type: none;
+  font-weight: bold;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+.side-menu ul li:hover {
+  color: var(--primary-color);
+}
+.side-menu ul li ul {
+  display: none;
+  position: absolute;
+  top: 9.8rem;
+  left: calc(17% - 1rem);
+  z-index: 10;
+}
+.side-menu ul li:hover ul {
+  display: block;
+  height: 40rem;
+  padding: 0 10rem 1rem 1rem;
+  position: fixed;
+  background: var(--text-gray-color-lighter);
+  box-shadow: 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.5);
+}
+.fa-angle-right {
+  margin: 0.4rem 0.8rem 0 0;
+  float: right;
+}
+#mobile-menu-btn,
+#mobile-menu-close-btn {
+  font-size: 3rem;
+  margin: 0rem 1.5rem;
+  padding-top: 0.5rem;
+  color: var(--primary-color);
+  position: relative;
+  align-self: center;
+}
+
+.fa-solid.hide-desktop {
+  display: none;
+}
+
+@media only screen and (max-width: 980px) {
+  .top-nav-bar {
+    height: 15.8rem;
+    border-bottom: 0;
+  }
+  .search-box {
+    width: 100%;
+  }
+  .menu-bar {
+    width: 100%;
+  }
+  .menu-bar ul {
+    margin: 0.1rem 0;
+    width: 100%;
+    padding: 0;
+  }
+  .menu-bar ul li {
+    height: 7.7rem;
+    width: 100%;
+  }
+  /*----------SIDE MENU----------*/
+  .side-menu {
+    width: 34%;
+    z-index: 20;
+    top: 14.4rem;
+    position: fixed;
+    font-size: 1.2rem;
+  }
+  .side-menu ul li ul {
+    top: 14.4rem;
+    left: calc(34% - 1rem);
+  }
+}
+@media only screen and (max-width: 600px) {
+  .fa-solid.hide-desktop {
+    display: block;
+  }
+  .fa-solid.hide-desktop.hide {
+    display: none;
+  }
+  .hide-side-menu {
+    display: none;
+  }
+}
+@media only screen and (max-width: 450px) {
+  /*----------SIDE MENU----------*/
+  .side-menu {
+    width: 40%;
+    z-index: 20;
+    top: 14.4rem;
+    position: fixed;
+    font-size: 1.2rem;
+  }
+  .side-menu ul li ul {
+    top: 14.4rem;
+    left: calc(40% - 1rem);
+  }
+}
