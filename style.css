@@ -338,6 +338,77 @@ footer hr {
   font-size: 1.5rem;
   padding-bottom: 2rem;
 }
+/* SINGLE PAGE PRODUCT */
+.single-product {
+  margin-top: 7rem;
+}
+#product-slider button {
+  background-color: var(--text-color-darker);
+  opacity: 0.2;
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  margin: 0.8rem;
+}
+.new-arrival {
+  background: green;
+  width: 5rem;
+  color: var(--default-color);
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 2rem;
+}
+.single-product .col-md-3 h2 {
+  color: var(--text-gray-color-dark);
+}
+.single-product .fa-solid,
+.single-product .fa-regular {
+  color: var(--original-color);
+}
+.single-product .price {
+  color: var(--original-color);
+  font-size: 2.6rem;
+  font-weight: bold;
+  padding-top: 2rem;
+}
+.single-product input {
+  border: 0.1rem solid var(--text-gray-color-light);
+  font-weight: bold;
+  height: 3.3rem;
+  text-align: center;
+  width: 5rem;
+}
+.single-product .btn-primary {
+  background: var(--original-color) !important;
+  color: var(--default-color);
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  border: none;
+  box-shadow: none !important;
+  height: 3.3rem !important;
+  margin-top: -0.6rem;
+}
+/* PRODUCT DESCRIPTION */
+.product-description h6 {
+  font-size: 1.6rem;
+  margin-top: 5rem;
+  color: var(--original-color);
+}
+.product-description p {
+  margin-top: 3rem;
+}
+.product-description hr {
+  margin-bottom: 5rem;
+}
+@media only screen and (max-width: 991px) {
+  .single-product .btn-primary {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+}
 @media only screen and (max-width: 980px) {
   .top-nav-bar {
     height: 15.8rem;
@@ -403,6 +474,9 @@ footer hr {
     z-index: 1;
     /* margin-left: 34%; */
   }
+  .single-product .slider {
+    position: static;
+  }
   /* } */
   /* @media only screen and (max-width: 450px) { */
   /*----------SIDE MENU----------*/
@@ -416,5 +490,11 @@ footer hr {
   .side-menu ul li ul {
     top: 15.4rem;
     left: calc(40% - 1rem);
+  }
+}
+@media only screen and (max-width: 768px) {
+  .single-product .btn-primary {
+    margin-left: 0;
+    margin-top: -0.6rem;
   }
 }

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/53a00de455.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>OnClick Single Product</title>
+  </head>
+  <body>
+    <header class="top-nav-bar">
+      <div class="search-box">
+        <a href="./"
+          ><img class="logo" src="./Assets/logo.png" alt="Logo image"
+        /></a>
+        <input type="text" class="form-control" />
+        <span class="input-group-text"
+          ><i class="fa-solid fa-magnifying-glass"></i
+        ></span>
+        <i class="fa-solid fa-bars hide-desktop" id="mobile-menu-btn"></i>
+        <i
+          class="fa-solid fa-times hide-desktop hide"
+          id="mobile-menu-close-btn"
+        ></i>
+      </div>
+
+      <div class="menu-bar">
+        <ul>
+          <li>
+            <a href="#"><i class="fa-solid fa-basket-shopping"></i>Cart</a>
+          </li>
+          <li><a href="#">Sign Up</a></li>
+          <li><a href="#">Log In</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+      <section class="single-product">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-7">
+              <div class="slider">
+                <div
+                  id="product-slider"
+                  class="carousel slide carousel-fade"
+                  data-bs-ride="carousel"
+                  data-bs-interval="3000"
+                >
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img
+                        src="./Assets/single-product/pic-1.png"
+                        class="d-block"
+                        alt="..."
+                      />
+                    </div>
+                    <div class="carousel-item">
+                      <img
+                        src="./Assets/single-product/pic-2.png"
+                        class="d-block"
+                        alt="..."
+                      />
+                    </div>
+                    <div class="carousel-item">
+                      <img
+                        src="./Assets/single-product/pic-3.png"
+                        class="d-block"
+                        alt="..."
+                      />
+                    </div>
+                    <div class="carousel-item">
+                      <img
+                        src="./Assets/single-product/pic-4.png"
+                        class="d-block"
+                        alt="..."
+                      />
+                    </div>
+                  </div>
+                  <button
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#product-slider"
+                    data-bs-slide="prev"
+                  >
+                    <span
+                      class="carousel-control-prev-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#product-slider"
+                    data-bs-slide="next"
+                  >
+                    <span
+                      class="carousel-control-next-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <p class="new-arrival text-center">NEW</p>
+              <h2>ULTRARANGE EXO CAPTAINS BLUE SHOES</h2>
+              <p>Product Code: IRSC2023</p>
+
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-regular fa-star-half-stroke"></i>
+
+              <p class="price">USD $15.00</p>
+              <p><b>Avaiability:</b> In Stock</p>
+              <p><b>Condition:</b> New</p>
+              <p><b>Brand:</b> Vans</p>
+
+              <label>Quantity:</label>
+              <input type="number" value="1" />
+              <button type="button" class="btn btn-primary">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRODUCT DESCRIPTION -->
+      <section class="product-description">
+        <div class="container">
+          <h6>Product Description</h6>
+          <p>
+            Sempre prontos para o inesperado. Acreditamos que a aventura começa
+            quando algo dá errado, por isso desenvolvemos um calçado que além de
+            resistir à jornada, mantem também o conforto até mesmo nas situações
+            mais desconfortáveis. Visando maximizar a cobertura de borracha,
+            aderência e durabilidade sem perder a leveza, o TÊNIS ULTRARANGE EXO
+            CAPTAINS BLUE é produzido com a clássica sola waffle em sua versão
+            invertida e tratorada combinada à entressola UltraCush™ Lite de
+            corpo único, proporcionando conforto e suporte completo. Com
+            inspiração na silhueta clássica Old Skool, o tecido superior com
+            trama respirável e formato renovado da biqueira de borracha do
+            RapidWeld™ que garantem um ajuste ideal sem sacrificar o DNA de
+            design da Vans, este é o UltraRange - evoluído.
+          </p>
+          <hr />
+        </div>
+
+        <div id="similar-products" class="container">
+          <div class="title-box">
+            <h2>Similar</h2>
+          </div>
+          <div class="row"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-md-3">
+            <h2>Useful Links</h2>
+            <p>Privacy Policy</p>
+            <p>Terms of Use</p>
+            <p>Return Policy</p>
+            <p>Discount Coupoms</p>
+          </div>
+          <div class="col-md-3">
+            <h2>Company</h2>
+            <p>About Us</p>
+            <p>Contact Us</p>
+            <p>Career</p>
+            <p>Affiliate</p>
+          </div>
+          <div class="col-md-3">
+            <h2>Follow Us On</h2>
+            <p><i class="fa-brands fa-square-facebook"></i>Facebook</p>
+            <p><i class="fa-brands fa-youtube"></i>Youtube</p>
+            <p><i class="fa-brands fa-linkedin"></i>Linkedin</p>
+            <p><i class="fa-brands fa-square-twitter"></i>Twitter</p>
+          </div>
+          <div class="col-md-3 footer-image">
+            <h2>Download App</h2>
+            <img src="./Assets/footer/play-store.png" alt="" />
+          </div>
+        </div>
+        <hr />
+        <p class="copyright">© Copyright 2023 GustavoDev All rights reserved</p>
+      </div>
+    </footer>
+
+    <script src="./btn_event_listeners.js"></script>
+    <!-- <script src="./create_onsale_product.js"></script> -->
+    <script src="./product.js" type="module"></script>
+  </body>
+</html>

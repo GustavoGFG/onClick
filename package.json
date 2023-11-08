@@ -1,0 +1,12 @@
+{
+  "name": "esmodules-node-practice",
+  "version": "1.0.0",
+  "description": "'pacote de código do aprendizado de ESModules no NodeJS'",
+  "main": "product.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gustavo Fernandes",
+  "license": "ISC",
+  "type": "module"
+}
