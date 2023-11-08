@@ -38,7 +38,7 @@ body {
   -color: var(--default-color);
   background: var(--default-color);
   margin-bottom: 2rem;
-  border-bottom: 0.3rem solid var(--primary-color);
+  border-bottom: 0.3rem solid var(--original-color);
   z-index: 3;
 }
 .logo {
@@ -50,7 +50,7 @@ body {
 .form-control {
   margin-top: 0.9rem;
   margin-left: 3rem;
-  border: 0.1rem solid var(--primary-color) !important;
+  border: 0.1rem solid var(--original-color) !important;
   border-top-left-radius: 3rem !important;
   border-bottom-left-radius: 3rem !important;
   border-top-right-radius: 0rem !important;
@@ -61,8 +61,8 @@ body {
 }
 
 .input-group-text {
-  background-color: var(--primary-color) !important;
-  border: 0.1rem solid var(--primary-color) !important;
+  background-color: var(--original-color) !important;
+  border: 0.1rem solid var(--original-color) !important;
   margin: 0.85rem 1rem 0rem 0rem;
   border-top-left-radius: 0rem !important;
   border-bottom-left-radius: 0rem !important;
@@ -95,14 +95,14 @@ body {
   padding: 0rem 4.5rem;
   height: 7.7rem;
   text-align: center;
-  background-color: var(--primary-color);
+  background-color: var(--original-color);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .menu-bar ul li:hover {
-  background-color: var(--primary-color-dark);
+  background-color: var(--primary-color-darker);
 }
 .menu-bar ul li a {
   font-size: 1.6rem;
@@ -127,7 +127,7 @@ body {
   font-size: 1.4rem;
   float: left;
   z-index: 2;
-  background: var(--primary-color-lighter);
+  background: var(--primary-color);
 }
 .side-menu ul {
   margin-left: 1rem;
@@ -140,7 +140,7 @@ body {
   cursor: pointer;
 }
 .side-menu ul li:hover {
-  color: var(--primary-color);
+  color: var(--primary-color-lighter);
 }
 .side-menu ul li ul {
   display: none;
@@ -154,7 +154,7 @@ body {
   height: 40rem;
   padding: 0 10rem 1rem 1rem;
   position: fixed;
-  background: var(--primary-color-lighter);
+  background: var(--primary-color);
   box-shadow: 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.5);
 }
 .fa-angle-right {
@@ -166,7 +166,7 @@ body {
   font-size: 3rem;
   margin: 0rem 1.5rem;
   padding-top: 0.5rem;
-  color: var(--primary-color);
+  color: var(--original-color);
   position: relative;
   align-self: center;
   cursor: pointer;
@@ -213,7 +213,7 @@ body {
 /*----------ON SALE PRODUCTS----------*/
 
 .title-box {
-  background-color: var(--primary-color);
+  background-color: var(--original-color);
   color: var(--default-color);
   width: 18rem;
   padding: 0.4rem 1rem;
@@ -223,7 +223,7 @@ body {
 }
 .title-box::after {
   content: '';
-  border-top: 4rem solid var(--primary-color);
+  border-top: 4rem solid var(--original-color);
   border-right: 5rem solid transparent;
   position: absolute;
   display: flex;
@@ -257,7 +257,7 @@ body {
 .overlay-right .fa-solid {
   cursor: pointer;
   background: var(--default-color);
-  color: #000;
+  color: var(--text-color-darker);
   height: 3.5rem;
   width: 3.5rem;
   font-size: 2rem;
@@ -272,7 +272,7 @@ body {
 /*----------PRODUCT BOTTOM----------*/
 .product-bottom .fa-solid,
 .product-bottom .fa-regular {
-  color: var(--primary-color);
+  color: var(--original-color);
   font-size: 1rem;
 }
 .product-bottom h3 {
@@ -283,7 +283,61 @@ body {
   font-size: 1.5rem;
   padding-bottom: 1rem;
 }
+/*----------NEW PRODUCTS----------*/
+.new-products {
+  margin: 5rem 0;
+}
+/*----------WEBSITE FEATURES----------*/
+.website-features {
+  margin: 6rem 0;
+}
+.feature-box {
+  padding-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.website-features img {
+  width: 20%;
+}
+.feature-text {
+  margin-top: 1rem;
+  /* float: right; */
+  width: 80%;
+  padding-left: 2rem;
+}
+footer {
+  margin-top: 5rem;
+  background: var(--text-color-darker);
+  color: var(--default-color);
+}
+footer h2 {
+  font-size: 1.5rem;
+  margin: 2.5rem 0;
+}
 
+footer p {
+  font-size: 1.2rem;
+}
+
+footer .row .fa-brands {
+  padding-right: 3rem;
+  font-size: 1.5rem;
+  width: 2rem;
+}
+footer img {
+  width: 150px;
+}
+footer hr {
+  margin-top: 1rem;
+  background: var(--text-gray-color-light);
+}
+.copyright {
+  margin-bottom: -8rem;
+  text-align: center;
+  font-size: 1.5rem;
+  padding-bottom: 2rem;
+}
 @media only screen and (max-width: 980px) {
   .top-nav-bar {
     height: 15.8rem;
