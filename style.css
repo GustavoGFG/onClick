@@ -403,6 +403,10 @@ footer hr {
 .product-description hr {
   margin-bottom: 5rem;
 }
+.img-fluid {
+  max-width: 100%;
+  aspect-ratio: 1/1;
+}
 @media only screen and (max-width: 991px) {
   .single-product .btn-primary {
     margin-left: 0;
