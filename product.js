@@ -11,7 +11,7 @@ let productId = getSelectedProductId();
 // createProductCard(similarProductList, similarProductsContainerRow);
 
 let apiProductList = await getProducts(url);
-
+console.log(apiProductList);
 const productSelected = apiProductList.find(product => {
   return product.id === Number(productId.productId);
 });
