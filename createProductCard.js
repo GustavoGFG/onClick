@@ -1,4 +1,4 @@
-import { starReview } from './starRating.js';
+import { starReview } from './usefull_functions.js';
 
 export function createProductCard(productList, productSectionContainer) {
   for (let product of productList) {

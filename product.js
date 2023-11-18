@@ -1,7 +1,6 @@
 import { createProductCard } from './createProductCard.js';
 import { createProductPage } from './createProductPage.js';
-import { similarProductList } from './data.js';
-import { getProducts, url } from './fake_store_api.js';
+import { getProducts, url, shuffle } from './usefull_functions.js';
 
 function getSelectedProductId() {
   return JSON.parse(localStorage.getItem('productSelected'));
@@ -16,11 +15,13 @@ const productSelected = apiProductList.find(product => {
   return product.id === Number(productId.productId);
 });
 
-const filteredList = apiProductList
-  .filter(product => {
-    return product.category === productSelected.category;
-  })
-  .slice(0, 4);
+let filteredList = apiProductList.filter(product => {
+  return (
+    product.category === productSelected.category &&
+    product.id != productId.productId
+  );
+});
+filteredList = shuffle(filteredList).slice(0, 4);
 
 createProductPage(productSelected);
 

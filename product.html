@@ -21,30 +21,70 @@
     <title>OnClick Single Product</title>
   </head>
   <body>
-    <header class="top-nav-bar">
-      <div class="search-box">
-        <a href="./"
-          ><img class="logo" src="./Assets/logo.png" alt="Logo image"
-        /></a>
-        <input type="text" class="form-control" />
-        <span class="input-group-text"
-          ><i class="fa-solid fa-magnifying-glass"></i
-        ></span>
-        <i class="fa-solid fa-bars hide-desktop" id="mobile-menu-btn"></i>
-        <i
-          class="fa-solid fa-times hide-desktop hide"
-          id="mobile-menu-close-btn"
-        ></i>
-      </div>
+    <header class="header shadow-sm">
+      <nav class="container header__menu">
+        <a class="header__logo" href="/">
+          <img class="header__logo-img" src="./assets/images/logo.png" alt="" />
+          <h1 class="header__logo-title">OnClick</h1>
+        </a>
 
-      <div class="menu-bar">
-        <ul>
-          <li>
-            <a href="#"><i class="fa-solid fa-basket-shopping"></i>Cart</a>
-          </li>
-          <li><a href="#">Sign Up</a></li>
-          <li><a href="#">Log In</a></li>
-        </ul>
+        <form class="header__form" action="">
+          <input
+            class="form__search-input"
+            type="text"
+            placeholder="Search OnClick"
+          />
+          <button class="form__submit-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+
+        <div class="header__btn-container shadow-sm">
+          <a
+            class="header__btn shadow-sm"
+            href="#product-categories-menu"
+            data-bs-toggle="offcanvas"
+            role="button"
+            aria-controls="product-categories-menu"
+          >
+            <i class="fa-solid fa-bars header__menu-icon"></i>
+          </a>
+          <a class="header__btn shadow-sm" href="">
+            <i class="fa-solid fa-user header__login-icon"></i>
+          </a>
+          <a class="header__btn shadow-sm" href="">
+            <i class="fa-solid fa-cart-shopping header__cart-icon"></i>
+          </a>
+        </div>
+      </nav>
+
+      <div
+        id="product-categories-menu"
+        class="offcanvas offcanvas-start"
+        data-bs-scroll="true"
+        data-bs-backdrop="true"
+        tabindex="-1"
+      >
+        <div class="offcanvas-header" style="background: red">
+          <h2 class="offcanvas-title" id="offcanvasScrollingLabel">
+            All Departments
+          </h2>
+          <button
+            type="button"
+            class="product-categories-menu__close-btn"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          >
+            <i class="fa-solid fa-xmark product-categories-menu__close-btn"></i>
+          </button>
+        </div>
+
+        <div class="offcanvas-body">
+          <div
+            id="product-categories-menu-body"
+            class="accordion accordion-flush"
+          ></div>
+        </div>
       </div>
     </header>
 
@@ -212,6 +252,7 @@
     <script src="./btn_event_listeners.js"></script>
     <!-- <script src="./create_onsale_product.js"></script> -->
     <!-- <script src="./fake_store_api.js"></script> -->
+    <script src="./productCategorie.js"></script>
     <script src="./product.js" type="module"></script>
     <script src="./createProductPage.js" type="module"></script>
   </body>

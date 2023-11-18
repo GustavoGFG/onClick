@@ -1,4 +1,4 @@
-import { starReview } from './starRating.js';
+import { starReview } from './usefull_functions.js';
 
 const main = document.getElementsByTagName('main')[0];
 
@@ -13,46 +13,26 @@ function getInnerHTML(productSelected) {
   let singleProductInnerHTML = ` <section class="single-product">
         <div class="container">
           <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
               <div class="slider">
                 <div
                   id="product-slider"
-                  class="carousel slide carousel-fade"
-                  data-bs-ride="carousel"
+                  class="carousel slide"
+                  
                   data-bs-interval="3000"
                 >
                   <div class="carousel-inner">
                     <div class="carousel-item active">
                       <img
-                        src="${productSelected.images[0]}"
-                        class="d-block"
+                        src="${productSelected.thumbnail}"
+                        class="d-block img-fluid"
                         alt="..."
                       />
                     </div>
-                    <div class="carousel-item">
-                      <img
-                        src="${productSelected.images[1]}"
-                        class="d-block"
-                        alt="..."
-                      />
-                    </div>
-                    <div class="carousel-item">
-                      <img
-                        src="${productSelected.images[2]}"
-                        class="d-block"
-                        alt="..."
-                      />
-                    </div>
-                    <div class="carousel-item">
-                      <img
-                        src="${productSelected.images[3]}"
-                        class="d-block"
-                        alt="..."
-                      />
-                    </div>
+                    ${createProductsImages(productSelected.images)}
                   </div>
                   <button
-                    class="carousel-control-prev"
+                    class="carousel-control-prev z-0"
                     type="button"
                     data-bs-target="#product-slider"
                     data-bs-slide="prev"
@@ -64,7 +44,7 @@ function getInnerHTML(productSelected) {
                     <span class="visually-hidden">Previous</span>
                   </button>
                   <button
-                    class="carousel-control-next"
+                    class="carousel-control-next z-0"
                     type="button"
                     data-bs-target="#product-slider"
                     data-bs-slide="next"
@@ -79,14 +59,16 @@ function getInnerHTML(productSelected) {
               </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-4">
               <p class="new-arrival text-center">NEW</p>
               <h2>${productSelected.title}</h2>
               <p>Product Code: ${'IRSC-' + productSelected.id + '-2023'}</p>
 
               ${starReview(productSelected.rating)}
 
-              <p class="price">USD $${productSelected.price.toFixed(2)}</p>
+              ${createProductPrice(productSelected)}
+              
+
               <p><b>Avaiability:</b> ${
                 productSelected.stock > 0 ? 'In Stock' : 'Out of Stock'
               }</p>
@@ -121,26 +103,34 @@ function getInnerHTML(productSelected) {
   return singleProductInnerHTML;
 }
 
-// function starReview(productReview) {
-//   const emptyStar = '<i class="fa-regular fa-star"></i>';
-//   const halfStar = '<i class="fa-regular fa-star-half-stroke"></i>';
-//   const fullStar = '<i class="fa-solid fa-star"></i>';
+function createProductsImages(images) {
+  let imagesContainer = '';
+  for (let image of images) {
+    imagesContainer += `
+    <div class="carousel-item">
+    <img
+      src="${image}"
+      class="d-block img-fluid"
+      alt="..."
+    />
+  </div>
+    `;
+  }
 
-//   let review = '';
-//   for (let i = 1; i < 6; i++) {
-//     if (productReview >= i) {
-//       review += fullStar;
-//     } else {
-//       if (
-//         productReview % 1 != 0 &&
-//         !review.includes(halfStar) &&
-//         productReview >= 0
-//       ) {
-//         review += halfStar;
-//       } else {
-//         review += emptyStar;
-//       }
-//     }
-//   }
-//   return review;
-// }
+  return imagesContainer;
+}
+
+function createProductPrice(productSelected) {
+  let priceContainer = '';
+  if (productSelected.discountPercentage != 0) {
+    priceContainer += `<p class="price-with-discount">USD $${productSelected.price.toFixed(
+      2
+    )}</p>`;
+  }
+  priceContainer += `<p class="price">USD $${(
+    (productSelected.price * (100 - productSelected.discountPercentage)) /
+    100
+  ).toFixed(2)}</p>`;
+
+  return priceContainer;
+}

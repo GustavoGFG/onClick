@@ -8,6 +8,8 @@ product.html for any product
   OK - Abrir a pagina product.html
   OK Fetch productList from API
   OK Find product in productList using saved id in localStorage
-  - Render product image and description
-    OK Filter productList using its category
-    OK Create Similar products section with first four products in category
+  OK - Render product image and description
+  OK Filter productList using its category
+  OK Create Similar products section with first four products in category
+  - Primeira img deve ser a thumbnail
+
