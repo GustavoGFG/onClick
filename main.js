@@ -2,7 +2,6 @@ import { createProductCard } from './createProductCard.js';
 import { getProducts, url, shuffle } from './usefull_functions.js';
 
 let apiProductList = await getProducts(url);
-console.log(apiProductList);
 
 let onSaleProductList = getOnSaleProducts(apiProductList);
 onSaleProductList = shuffle(onSaleProductList).slice(0, 4);
@@ -15,8 +14,8 @@ const newProductContainerRow = document.querySelectorAll(
   '#new-products-container .row'
 );
 
-createProductCard(onSaleProductList, onSaleContainerRow);
-createProductCard(newProductsProductList, newProductContainerRow);
+createProductCard(onSaleProductList, 'on sale');
+createProductCard(newProductsProductList, 'new arrivals');
 
 function getOnSaleProducts(list) {
   return list.filter(product => {

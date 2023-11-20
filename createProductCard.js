@@ -1,6 +1,20 @@
-import { starReview } from './usefull_functions.js';
+import { capitalizeWords, starReview } from './usefull_functions.js';
 
-export function createProductCard(productList, productSectionContainer) {
+const sectionName = 'on sale';
+
+export function createProductCard(productList, sectionName) {
+  let section = document.createElement('section');
+  section.id = `${sectionName.replace(' ', '')}-section`;
+  section.classList.add('container');
+  section.classList.add('product-section');
+  section.innerHTML = `
+  <div class="title-box">
+    <h2>${capitalizeWords(sectionName)}</h2>
+  </div>
+  <div class="row"></div>
+  `;
+  document.getElementsByTagName('main')[0].appendChild(section);
+
   for (let product of productList) {
     let ProductContainer = document.createElement('div');
     ProductContainer.classList.add('col-md-3');
@@ -30,7 +44,9 @@ export function createProductCard(productList, productSectionContainer) {
     <h5>$${product.price}</h5>
     </div>
     `;
-    productSectionContainer[0].appendChild(ProductContainer);
+    document
+      .querySelector(`#${sectionName.replace(' ', '')}-section .row`)
+      .appendChild(ProductContainer);
 
     let viewButton = document.getElementById(`productid-${product.id}`);
 

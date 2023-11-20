@@ -9,7 +9,6 @@ export function createProductPage(productSelected) {
   main.appendChild(singleProductSection);
 }
 function getInnerHTML(productSelected) {
-  console.log(productSelected);
   let singleProductInnerHTML = ` <section class="single-product">
         <div class="container">
           <div class="row">
@@ -25,7 +24,7 @@ function getInnerHTML(productSelected) {
                     <div class="carousel-item active">
                       <img
                         src="${productSelected.thumbnail}"
-                        class="d-block img-fluid"
+                        class="d-block img-fluid w-100"
                         alt="..."
                       />
                     </div>
@@ -92,14 +91,8 @@ function getInnerHTML(productSelected) {
           </p>
           <hr />
         </div>
-
-        <div id="similar-products" class="container">
-          <div class="title-box">
-            <h2>Similar</h2>
-          </div>
-          <div class="row"></div>
-        </div>
-      </section> `;
+      </section> 
+      `;
   return singleProductInnerHTML;
 }
 
@@ -110,7 +103,7 @@ function createProductsImages(images) {
     <div class="carousel-item">
     <img
       src="${image}"
-      class="d-block img-fluid"
+      class="d-block img-fluid w-100"
       alt="..."
     />
   </div>

@@ -1,11 +1,17 @@
+import { capitalizeWords, getProducts, url } from './usefull_functions.js';
+
+// import { apiProductList } from './createCategoryPage.js';
+
+let alist = await getProducts(url);
+
 const productCategoriesArray = [
   {
     category: 'Accessories',
-    subCategory: ['Cap', 'Belt', 'Sunglasses'],
+    subCategory: ['Caps', 'Belts', 'Sunglasses'],
   },
   {
     category: 'Alcohol',
-    subCategory: ['Accessories', 'Beer', 'Whiskey', 'Wine'],
+    subCategory: ['Accessories', 'Beers', 'Whiskies', 'Wines'],
   },
   {
     category: 'Books',
@@ -14,14 +20,14 @@ const productCategoriesArray = [
   {
     category: 'Fitness',
     subCategory: [
-      'Protein & Supplements',
+      'Proteins & Supplements',
       'Strength & Cardio',
       'Vitamins & Supplements',
     ],
   },
   {
     category: 'Health',
-    subCategory: ['Health & Wellness & Electronics'],
+    subCategory: ['Heath Electronics'],
   },
   {
     category: 'Pants & Shorts',
@@ -29,7 +35,7 @@ const productCategoriesArray = [
   },
   {
     category: 'Personal Care',
-    subCategory: ['Cologne & Fragrance', 'Hair Care', 'Shaving & Grooming'],
+    subCategory: ['Cologne & Fragrances', 'Hair Care', 'Shaving & Grooming'],
   },
   {
     category: 'Shirts',
@@ -40,16 +46,67 @@ const productCategoriesArray = [
     subCategory: ['Loafers', 'Slippers', 'Sneakers'],
   },
   {
-    category: 'Watch',
-    subCategory: ['Analog Watch', 'Smartwatch'],
+    category: 'Watches',
+    subCategory: ['Analog Watches', 'Smartwatches'],
   },
 ];
+
+let list = [];
+
+alist.forEach(product => {
+  if (list.length == 0) {
+    list[0] = {
+      category: product.category,
+      subcategory: [product.subcategory],
+    };
+  }
+  for (let i = 0; i < list.length; i++) {
+    if (list[i].category == product.category) {
+      if (!list[i].subcategory.includes(product.subcategory)) {
+        list[i].subcategory.push(product.subcategory);
+        return;
+      } else {
+        return;
+      }
+    } else if (i == list.length - 1 && list[i].category != product.category) {
+      list[i + 1] = {
+        category: product.category,
+        subcategory: [product.subcategory],
+      };
+    }
+  }
+});
+
+//
+function sortCategoriesAlphabetically(categoriesArray) {
+  // Sort the categories alphabetically based on the 'category' property
+  categoriesArray.sort((a, b) => {
+    const categoryA = a.category.toLowerCase();
+    const categoryB = b.category.toLowerCase();
+
+    if (categoryA < categoryB) {
+      return -1;
+    }
+    if (categoryA > categoryB) {
+      return 1;
+    }
+    return 0;
+  });
+  return categoriesArray;
+}
+//
+
+list = sortCategoriesAlphabetically(list);
+
+list.forEach(item => {
+  item.subcategory = item.subcategory.sort();
+});
 
 const departmentsSideMenu = document.getElementById(
   'product-categories-menu-body'
 );
 
-productCategoriesArray.forEach((element, index) => {
+list.forEach((element, index) => {
   departmentsSideMenu.innerHTML += `
   <div class="accordion-item">
               <h2 class="accordion-header">
@@ -61,7 +118,7 @@ productCategoriesArray.forEach((element, index) => {
                   aria-expanded="false"
                   aria-controls="flush-collapse-${index}"
                 >
-                  ${element.category}
+                  ${capitalizeWords(element.category)}
                 </button>
               </h2>
               <div
@@ -71,7 +128,7 @@ productCategoriesArray.forEach((element, index) => {
               >
                 <div class="accordion-body">
                   <ul class="list-group list-group-flush">
-                    ${getSubCategories(element.subCategory)}
+                    ${getSubCategories(element.subcategory)}
                     
                   </ul>
                 </div>
@@ -80,10 +137,28 @@ productCategoriesArray.forEach((element, index) => {
   `;
 });
 
+list.forEach(element => {
+  element.subcategory.forEach(item => {
+    document
+      .getElementById(`${item}-link`)
+      .addEventListener('click', () => saveSelectedProductCategory(item));
+  });
+});
 function getSubCategories(element) {
   let listOfSubcategories = '';
   element.forEach(categories => {
-    listOfSubcategories += `<a href="#" class="list-group-item">${categories}</a>`;
+    listOfSubcategories += `<a id="${categories}-link" href="./category.html" class="list-group-item">${capitalizeWords(
+      categories
+    )}</a>`;
   });
   return listOfSubcategories;
+}
+
+function saveSelectedProductCategory(selectedCategory) {
+  let selectedProductCategory = { selectedCategory };
+
+  localStorage.setItem(
+    'categorySelected',
+    JSON.stringify(selectedProductCategory)
+  );
 }

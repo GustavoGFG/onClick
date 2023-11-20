@@ -49,3 +49,9 @@ export async function getProducts(url) {
 
   return productListData;
 }
+
+export function capitalizeWords(str) {
+  return str.replace(/\b\w/g, function (char) {
+    return char.toUpperCase();
+  });
+}

@@ -1,15 +1,26 @@
-Department section in product.html page, mobile menu buttons exists but do nothing
-max-width 365px nav cart | sign up | log breaking page, not reducing like other elements
+Main Page
 
-product.html for any product
+- On Sale Section -> Get 4 Random On Sale Products
+  -> Create old price and price with discount on product card
 
-- Na main page -> Clicou no botão de visualizar no card do produto
-  OK - Salvar o id do produto no localStorage
-  OK - Abrir a pagina product.html
-  OK Fetch productList from API
-  OK Find product in productList using saved id in localStorage
-  OK - Render product image and description
-  OK Filter productList using its category
-  OK Create Similar products section with first four products in category
-  - Primeira img deve ser a thumbnail
+- New Arrivals Section -> Get last 8 products registered in database
 
+==========================================================================================
+Product Page
+
+-
+
+==========================================================================================
+Category Page
+
+- Category Side Menu -> Pull categories and subcategories from database
+
+==========================================================================================
+Create Login Page
+
+- Product Card -> Click on heart icon on product card and save product in user's favorites
+
+==========================================================================================
+Create Cart Page
+
+- Product Card -> Click on cart icon on product card and save product in user's cart
