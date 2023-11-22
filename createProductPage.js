@@ -73,7 +73,7 @@ function getInnerHTML(productSelected) {
               }</p>
               <p><b>Condition:</b> New</p>
               <p><b>Brand:</b> ${productSelected.brand}</p>
-              <div style="display: flex; align-items: center">
+              <div class="quantity-container">
                 <label>Quantity:</label>
                 <input type="number" value="1" />
                 <button type="button" class="btn btn-primary">Add to Cart</button>
