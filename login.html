@@ -49,7 +49,7 @@
           >
             <i class="fa-solid fa-bars header__menu-icon"></i>
           </a>
-          <a class="header__btn shadow-sm" href="./login.html">
+          <a class="header__btn shadow-sm" href="#">
             <i class="fa-solid fa-user header__login-icon"></i>
           </a>
           <a class="header__btn shadow-sm" href="">
@@ -89,7 +89,36 @@
     </header>
 
     <!-- MAIN -->
-    <main></main>
+    <main class="main-flex">
+      <section class="log-in-container container">
+        <form action="" class="form-container shadow-sm">
+          <h2>LOG IN</h2>
+          <div class="mb-3 login-input-container">
+            <input
+              type="email"
+              class="form-control login-input"
+              id="sign-in-input__email"
+              placeholder="Email address"
+            />
+          </div>
+          <div class="mb-3 login-input-container">
+            <input
+              type="password"
+              class="form-control login-input"
+              id="sign-in-input__password"
+              placeholder="Password"
+            />
+          </div>
+          <p>Demo account: user@example.com | password: user1234</p>
+          <button type="submit" class="btn btn-primary">LOGIN</button>
+        </form>
+
+        <div class="sign-up-container form-container shadow-sm">
+          <p>Don't have an account?</p>
+          <a href="./signup.html">Sign Up</a>
+        </div>
+      </section>
+    </main>
 
     <!-- FOOTER -->
     <footer>
@@ -126,10 +155,7 @@
       </div>
     </footer>
 
-    <!-- <script src="./create_onsale_product.js"></script> -->
-    <!-- <script src="./fake_store_api.js"></script> -->
     <script src="./productCategorie.js" type="module"></script>
-    <script src="./product.js" type="module"></script>
-    <script src="./createProductPage.js" type="module"></script>
+    <script src="./login.js" type="module"></script>
   </body>
 </html>
