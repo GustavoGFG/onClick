@@ -1,6 +1,6 @@
-import { apiProductList } from './fetchData.mjs';
-import { createProductCard } from './productCard.mjs';
-import { shuffle, starReview } from './utils.mjs';
+import { apiProductList } from './fetchData.js';
+import { createProductCard } from './productCard.js';
+import { shuffle, starReview } from './utils.js';
 
 const main = document.getElementsByTagName('main')[0];
 

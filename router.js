@@ -1,8 +1,8 @@
-import { createCategoryPage } from './src/js/CategoryPage.mjs';
-import { apiProductList, subcategoryArray } from './src/js/fetchData.mjs';
-import { createMainPage } from './src/js/mainPage.mjs';
-import { createProductCard } from './src/js/productCard.mjs';
-import { createProductPage } from './src/js/productPage.mjs';
+import { createCategoryPage } from './src/js/categoryPage.js';
+import { apiProductList, subcategoryArray } from './src/js/fetchData.js';
+import { createMainPage } from './src/js/mainPage.js';
+import { createProductCard } from './src/js/productCard.js';
+import { createProductPage } from './src/js/productPage.js';
 
 const route = event => {
   event = event || window.event;

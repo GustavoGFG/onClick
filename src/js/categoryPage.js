@@ -1,4 +1,4 @@
-import { createProductCard } from './productCard.mjs';
+import { createProductCard } from './productCard.js';
 
 // function getSelectedProductCategory() {
 //   return JSON.parse(localStorage.getItem('categorySelected'));

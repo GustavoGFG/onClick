@@ -1,5 +1,5 @@
-import { createProductCard } from './productCard.mjs';
-import { shuffle } from './utils.mjs';
+import { createProductCard } from './productCard.js';
+import { shuffle } from './utils.js';
 
 export function createMainPage(productList) {
   console.log(productList);

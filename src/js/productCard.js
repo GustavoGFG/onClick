@@ -1,4 +1,4 @@
-import { capitalizeWords, starReview } from './utils.mjs';
+import { capitalizeWords, starReview } from './utils.js';
 
 // const sectionName = 'on sale';
 

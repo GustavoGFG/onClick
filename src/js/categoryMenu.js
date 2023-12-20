@@ -1,4 +1,4 @@
-import { capitalizeWords } from './utils.mjs';
+import { capitalizeWords } from './utils.js';
 
 export function createProductCategoryMenu(productArray) {
   let categoryArray = createProductCategoryArray(productArray);
