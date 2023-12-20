@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./src/css/style.css" />
 
     <!-- Font Awesome -->
     <script
@@ -23,8 +23,8 @@
   <body>
     <header class="header shadow-sm">
       <nav class="container header__menu">
-        <a class="header__logo" href="#">
-          <img class="header__logo-img" src="./Assets/images/logo.png" alt="" />
+        <a class="header__logo" href="/">
+          <img class="header__logo-img" src="./src/Assets/logo.png" alt="" />
           <h1 class="header__logo-title">OnClick</h1>
         </a>
 
@@ -49,7 +49,7 @@
           >
             <i class="fa-solid fa-bars header__menu-icon"></i>
           </a>
-          <a class="header__btn shadow-sm" href="./login.html">
+          <a class="header__btn shadow-sm" href="/login">
             <i class="fa-solid fa-user header__login-icon"></i>
           </a>
           <a class="header__btn shadow-sm" href="">
@@ -87,134 +87,31 @@
         </div>
       </div>
     </header>
-    <main>
-      <section class="banner shadow-sm">
-        <div
-          id="carouselExample"
-          class="carousel slide"
-          data-bs-ride="carousel"
-        >
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <picture>
-                <source
-                  media="(max-width: 800px)"
-                  srcset="./Assets/images/bg-1_900x750.png"
-                />
-
-                <img
-                  class="d-block w-100"
-                  src="./Assets/images/bg-1_1600x750.png"
-                  alt=""
-                />
-              </picture>
-            </div>
-            <div class="carousel-item">
-              <picture>
-                <source
-                  media="(max-width: 800px)"
-                  srcset="./Assets/images/bg-2_900x750.png"
-                />
-
-                <img
-                  class="d-block w-100"
-                  src="./Assets/images/bg-2_1600x750.png"
-                  alt=""
-                />
-              </picture>
-            </div>
-            <div class="carousel-item">
-              <picture>
-                <source
-                  media="(max-width: 800px)"
-                  srcset="./Assets/images/bg-3_900x750.png"
-                />
-
-                <img
-                  class="d-block w-100"
-                  src="./Assets/images/bg-3_1600x750.png"
-                  alt=""
-                />
-              </picture>
-            </div>
-          </div>
-          <button
-            class="carousel-control-prev z-0"
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide="prev"
-          >
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button
-            class="carousel-control-next z-0"
-            type="button"
-            data-bs-target="#carouselExample"
-            data-bs-slide="next"
-          >
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </section>
-
-      <!-- FEATURED CATEGORIES -->
-
-      <section class="featured-categories">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-4">
-              <a href="./product.html"
-                ><img src="./Assets/products/blue-shoe.png" alt=""
-              /></a>
-            </div>
-            <div class="col-md-4">
-              <img src="./Assets/products/relogio.png" alt="" />
-            </div>
-            <div class="col-md-4">
-              <img src="./Assets/products/headphone.png" alt="" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- On Sale Products -->
-
-      <!-- New Products -->
-      <!-- <section class="new-products">
-        <div id="new-products-container" class="container">
-          <div class="title-box">
-            <h2>New Arrivals</h2>
-          </div>
-          <div class="row"></div>
-        </div>
-      </section> -->
-    </main>
+    <main id="main" class="main-flex"></main>
     <!-- Website Features -->
     <section class="website-features">
       <div class="container">
         <div class="row">
           <div class="col-md-3 feature-box">
-            <img src="./Assets/features/guarantee.png" alt="" />
+            <img src="./src/Assets/features/guarantee.png" alt="" />
             <div class="feature-text">
               <p><b>100% Original items</b> are available at company</p>
             </div>
           </div>
           <div class="col-md-3 feature-box">
-            <img src="./Assets/features/return.png" alt="" />
+            <img src="./src/Assets/features/return.png" alt="" />
             <div class="feature-text">
               <p><b>Return within 30 days</b> of receiving your order.</p>
             </div>
           </div>
           <div class="col-md-3 feature-box">
-            <img src="./Assets/features/shipping.png" alt="" />
+            <img src="./src/Assets/features/shipping.png" alt="" />
             <div class="feature-text">
               <p><b>Free Shipping</b> on All U.S. Orders Over $50</p>
             </div>
           </div>
           <div class="col-md-3 feature-box">
-            <img src="./Assets/features/payment.png" alt="" />
+            <img src="./src/Assets/features/payment.png" alt="" />
             <div class="feature-text">
               <p><b>Pay Online</b> through multiple payment options</p>
             </div>
@@ -250,7 +147,7 @@
           </div>
           <div class="col-md-3 footer-image">
             <h2>Download App</h2>
-            <img src="./Assets/footer/play-store.png" alt="" />
+            <img src="./src/Assets/footer/play-store.png" alt="" />
           </div>
         </div>
         <hr />
@@ -258,8 +155,9 @@
       </div>
     </footer>
 
-    <script src="./productCategorie.js" type="module"></script>
+    <!-- <script src="./productCategorie.js" type="module"></script> -->
 
     <script src="./main.js" type="module"></script>
+    <script src="./router.js" type="module"></script>
   </body>
 </html>
