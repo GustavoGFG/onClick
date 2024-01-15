@@ -1,4 +1,4 @@
-const url = 'http://localhost:8000';
+const url = 'https://onclick.cyclic.app';
 
 const login = () => {
   var email = document.getElementById('sign-in-input__email').value;
