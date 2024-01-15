@@ -30,16 +30,19 @@ const handleLocation = async () => {
   let productId = params.get('id');
   let department = params.get('department');
 
-  if (
-    productId &&
-    (productId <= 0 ||
-      productId > apiProductList.length ||
-      isNaN(Number(productId)) ||
-      productId % productId != 0)
-  ) {
-    route = routes[404];
-    pageNotFoud = true;
+  let productSelected;
+
+  if (path === '/product') {
+    productSelected = apiProductList.filter(product => {
+      return product.id == productId;
+    })[0];
+    if (!productSelected) {
+      console.log('Entrou');
+      route = routes[404];
+      pageNotFoud = true;
+    }
   }
+
   if (!subcategoryArray.includes(department) && department !== null) {
     route = routes[404];
     pageNotFoud = true;
@@ -53,9 +56,6 @@ const handleLocation = async () => {
   }
 
   if (window.location.pathname === '/product' && pageNotFoud == false) {
-    let productSelected = apiProductList.filter(product => {
-      return product.id == productId;
-    })[0];
     createProductPage(productSelected);
   }
   if (window.location.pathname === '/products' && pageNotFoud == false) {
