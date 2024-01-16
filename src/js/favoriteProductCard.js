@@ -2,18 +2,12 @@ import { capitalizeWords, starReview } from './utils.js';
 
 // const sectionName = 'on sale';
 
-export function createProductCard(productList, sectionName) {
-  let section = document.createElement('section');
-  section.id = `${sectionName.replace(' ', '')}-section`;
-  section.classList.add('container');
-  section.classList.add('product-section');
-  section.innerHTML = `
-  <div class="title-box">
-    <h2>${capitalizeWords(sectionName)}</h2>
-  </div>
-  <div class="row"></div>
-  `;
-  document.getElementsByTagName('main')[0].appendChild(section);
+export function createFavoriteProductCard(productList, sectionName) {
+  // let section = document.createElement('section');
+  let container = document.getElementById(sectionName);
+  container.classList.add('container');
+  container.classList.add('product-section');
+  container.classList.add('row');
 
   for (let product of productList) {
     let ProductContainer = document.createElement('div');
@@ -30,10 +24,10 @@ export function createProductCard(productList, sectionName) {
     }' type="button" class="btn btn-secondary" title="Quick Shop">
         <i class="fa-solid fa-eye"></i>
       </a>
-      <button type="button" class="btn btn-secondary" title="Add to Wishlist" onclick='addToFavorites(${
+      <button type="button" class="btn btn-secondary" title="Add to Wishlist" onclick='removeFromFavorites(${
         product.id
       })'>
-      <i class="fa-solid fa-heart"></i>
+      <i class="fa-solid fa-heart-circle-xmark"></i>
       </button>
       <button type="button" class="btn btn-secondary" title="Add to Cart" onclick='addToCart(${
         product.id
@@ -50,9 +44,7 @@ export function createProductCard(productList, sectionName) {
     <h5>$${product.price}</h5>
     </div>
     `;
-    document
-      .querySelector(`#${sectionName.replace(' ', '')}-section .row`)
-      .appendChild(ProductContainer);
+    document.querySelector(`#${sectionName}`).appendChild(ProductContainer);
 
     let viewButton = document.getElementById(`productid-${product.id}`);
 

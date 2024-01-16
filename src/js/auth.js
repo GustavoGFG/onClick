@@ -55,3 +55,82 @@ const signup = () => {
   };
   makeSignup();
 };
+
+const checkLogin = () => {
+  const token = localStorage.getItem('token');
+  console.log(token);
+  if (token) {
+    window.location.assign('/profile');
+  } else {
+    window.location.assign('/login');
+  }
+};
+
+const logout = () => {
+  localStorage.removeItem('token');
+  window.location.assign('/');
+};
+
+const addToCart = productId => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    const addToCartDB = async () => {
+      const response = await fetch(url + '/addtocart', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ itemId: productId }),
+      });
+      const data = await response.json();
+    };
+    addToCartDB();
+  } else {
+    window.location.assign('/login');
+  }
+};
+const addToFavorites = productId => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    const addToFavoritesDB = async () => {
+      const response = await fetch(url + '/addtofavorites', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ itemId: productId }),
+      });
+      const data = await response.json();
+    };
+    addToFavoritesDB();
+  } else {
+    window.location.assign('/login');
+  }
+};
+const removeFromFavorites = productId => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    const removeFromFavoritesDB = async () => {
+      const response = await fetch(url + '/removefromfavorites', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ itemId: productId }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        document.getElementById('favorite-option').click();
+      }
+    };
+    removeFromFavoritesDB();
+  } else {
+    window.location.assign('/login');
+  }
+};

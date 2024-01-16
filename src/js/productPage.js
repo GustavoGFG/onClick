@@ -82,7 +82,9 @@ function getInnerHTML(productSelected) {
               <div class="quantity-container">
                 <label>Quantity:</label>
                 <input type="number" value="1" />
-                <button type="button" class="btn btn-primary">Add to Cart</button>
+                <button type="button" class="btn btn-primary" onclick='addToCart(${
+                  productSelected.id
+                })'>Add to Cart</button>
               <div>
             </div>
           </div>

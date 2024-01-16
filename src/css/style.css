@@ -1,4 +1,6 @@
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -142,6 +144,7 @@ body {
   padding: 0.2rem;
   padding-left: 0.8rem;
 }
+
 .product-categories-menu__close-btn {
   color: white !important;
   font-size: 2rem;
@@ -227,10 +230,14 @@ body {
   margin-left: 0;
   width: 7rem;
 }
-.product-top:hover .overlay-right {
+.product-top:hover .overlay-right,
+.product-top:target .overlay-right {
   opacity: 1;
   margin-left: 5%;
   transition: 0.5s;
+}
+.fa-solid:hover {
+  color: var(--primary-color-dark) !important;
 }
 .overlay-right .fa-solid {
   cursor: pointer;
@@ -424,7 +431,101 @@ footer hr {
   color: var(--text-color-darker);
   text-transform: uppercase;
 }
-/*----------WEBSITE FEATURES----------*/
+/* 
+====================================
+            PROFILE PAGE
+====================================
+*/
+#profile-section {
+  background: rgba(253, 138, 138, 0.088);
+  min-height: 100dvh;
+  max-height: 100dvh;
+  width: 100%;
+  display: flex;
+  overflow-y: hidden;
+}
+.profile-menu {
+  position: relative;
+  width: 25rem;
+  min-height: 100%;
+  box-shadow: 1px 0px 15px 0px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+.logout-btn {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  font-size: 2rem;
+  padding: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.logout-btn:hover {
+  background-color: rgba(91, 76, 76, 0.1);
+}
+.user-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-img-container {
+  justify-self: center;
+  align-self: center;
+  width: calc(100% - 12rem);
+  border-radius: 50%;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  margin: 4rem 0 1rem;
+}
+.profile-img-container img {
+  width: 100%;
+}
+.profile-name {
+  margin: 1rem auto 1rem;
+  font-weight: 600;
+  font-size: 2.2rem;
+}
+.profile-menu-options {
+  display: flex;
+  flex-direction: column;
+}
+.profile-menu-option {
+  padding: 1.5rem 4.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+.profile-menu-option:hover {
+  background-color: rgba(91, 76, 76, 0.1);
+}
+.profile-menu-option i {
+  color: var(--primary-color);
+  font-size: 3rem;
+}
+.fa-heart-profile {
+  font-size: 2.6rem !important;
+}
+.profile-menu-option p {
+  margin: 0;
+  font-size: 1.8rem;
+}
+#profile-main-container {
+  overflow-y: scroll;
+}
+#profile-main-container-title {
+  width: fit-content;
+  font-size: 4rem;
+  padding: 0 8rem 0 4rem;
+  /* text-align: center; */
+  margin-bottom: 5rem;
+  font-weight: 600;
+  color: var(--default-color);
+  background: var(--primary-color);
+  clip-path: polygon(0% 0%, 100% 0%, calc(100% - 4rem) 100%, 0% 100%);
+}
+
 @media only screen and (max-width: 991px) {
   .single-product .btn-primary {
     margin-left: 0;
@@ -450,32 +551,6 @@ footer hr {
     height: 7.7rem;
     width: 100%;
   }
-  /*----------SIDE MENU----------*/
-  /* .side-menu {
-    width: 34%;
-    z-index: 20;
-    top: 14.4rem;
-    position: fixed;
-    font-size: 1.2rem;
-  }
-  .side-menu ul li ul {
-    top: 14.4rem;
-    left: calc(34% - 1rem);
-  }
-  /*----------SLIDER----------*/
-  /* .slider {
-    position: fixed;
-    top: 14.4rem;
-    margin: 0;
-    left: calc(34%);
-    width: 66%;
-    padding: 0;
-    z-index: 1;
-    margin-left: 34%;
-  } */
-
-  /* } */
-  /* @media only screen and (max-width: 600px) { */
   .fa-solid.hide-desktop {
     display: block;
   }
@@ -498,8 +573,6 @@ footer hr {
   .single-product .slider {
     position: static;
   }
-  /* } */
-  /* @media only screen and (max-width: 450px) { */
   /*----------SIDE MENU----------*/
   .side-menu {
     width: 40%;
@@ -521,14 +594,18 @@ footer hr {
 
 .main-flex,
 .log-in-container {
-  min-height: 100% !important;
+  /* min-height: calc(80rem) !important; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  align-self: center;
   gap: 1rem;
 }
-
+.log-in-container {
+  background: rgba(253, 138, 138, 0.15);
+  min-width: 100%;
+}
 .log-in-container form,
 .sign-up-container {
   padding: 3rem 2rem;
@@ -537,7 +614,7 @@ footer hr {
   justify-content: center;
   align-items: center;
   gap: 1rem !important;
-  background: rgba(253, 138, 138, 0.088);
+  background-color: #fff;
 }
 
 .sign-up-container {
@@ -590,6 +667,7 @@ footer hr {
   /* border: 1px solid black; */
   margin: 0;
 }
+
 /* 
 =====================
   RESPONSIVE 800 PX
@@ -599,10 +677,14 @@ footer hr {
   .container,
   .row {
     --bs-gutter-x: 0rem !important;
+    gap: 1rem;
   }
   .container {
     max-width: 100% !important;
     padding: 0 !important;
+  }
+  .col-sm-6 {
+    width: calc(50% - 0.5rem) !important;
   }
 
   .header__menu {
@@ -641,6 +723,57 @@ footer hr {
   .row > * {
     padding-right: 0 !important;
   }
+  #profile-section {
+    flex-direction: column;
+  }
+
+  .profile-menu {
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    min-height: fit-content;
+    height: auto;
+  }
+  .logout-btn {
+    font-size: 3rem;
+    top: 1rem;
+    right: 1rem;
+  }
+  .profile-menu-options {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+  }
+  .profile-menu-option {
+    flex-direction: column;
+    padding: 0;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem 0;
+  }
+  #profile-main-container-title {
+    width: fit-content;
+    font-size: 3rem;
+    padding: 0 8rem 0 4rem;
+    margin-bottom: 3rem;
+  }
+  .profile-img-container {
+    justify-self: center;
+    align-self: center;
+    width: 10rem;
+    margin: 2rem 0 0rem;
+  }
+  .profile-img-container img {
+    width: 100%;
+  }
+  .profile-name {
+    margin: 0rem auto 1rem;
+    font-weight: 600;
+    font-size: 1.8rem;
+  }
 }
 @media all and (max-width: 500px) {
   .title-404 {
@@ -649,5 +782,13 @@ footer hr {
   }
   .link-404 {
     font-size: 1.6rem;
+  }
+  #profile-main-container-title {
+    width: fit-content;
+    font-size: 2.5rem;
+    padding: 0 4rem 0 2rem;
+    /* text-align: center; */
+    margin-bottom: 3rem;
+    clip-path: polygon(0% 0%, 100% 0%, calc(100% - 2rem) 100%, 0% 100%);
   }
 }
