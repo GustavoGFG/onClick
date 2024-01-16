@@ -4,6 +4,7 @@ import { apiProductList, subcategoryArray } from './src/js/fetchData.js';
 import { createMainPage } from './src/js/mainPage.js';
 import { createProductCard } from './src/js/productCard.js';
 import { createProductPage } from './src/js/productPage.js';
+import { createProductsInCart } from './src/js/productsInCart.js';
 
 const route = event => {
   event = event || window.event;
@@ -19,7 +20,7 @@ const routes = {
   '/profile': '/src/pages/profile.html',
   '/products': '/src/pages/products.html',
   '/product': '/src/pages/product.html',
-  '/cart': '/src/pages/product.html',
+  '/cart': '/src/pages/cart.html',
   404: '/src/pages/404.html',
 };
 
@@ -68,7 +69,7 @@ const handleLocation = async () => {
 
     const showFavorite = () => {
       document.getElementById('profile-main-container').innerHTML =
-        '<p id="profile-main-container-title"></p><div id="profile-main-product-container" class="container product-section"></div>';
+        '<p id="profile-main-container-title" class="title-box"></p><div id="profile-main-product-container" class="container product-section"></div>';
       document.getElementById('profile-main-container-title').innerHTML =
         'FAVORITE PRODUCTS';
       const token = localStorage.getItem('token');
@@ -103,6 +104,40 @@ const handleLocation = async () => {
     favoriteOption.addEventListener('click', () =>
       showFavorite(apiProductList)
     );
+  }
+  if (window.location.pathname === '/cart') {
+    var cartData;
+    const token = localStorage.getItem('token');
+    if (token) {
+      const fetchCart = async () => {
+        const response = await fetch(
+          'https://onclick.cyclic.app/productsincart',
+          {
+            method: 'GET',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        const data = await response.json();
+        if (data.success) {
+          const arrayOfProductIds = data.cartData.map(object => {
+            return object.id;
+          });
+          cartData = apiProductList.filter(product => {
+            return arrayOfProductIds.includes(product.id);
+          });
+          createProductsInCart(cartData);
+
+          return;
+        }
+      };
+      fetchCart();
+    } else {
+      window.location.assign('/login');
+    }
   }
 };
 

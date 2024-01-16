@@ -28,17 +28,17 @@ export function createProductCard(productList, sectionName) {
     <a href="/product?id=${product.id}" id='viewbutton-${
       product.id
     }' type="button" class="btn btn-secondary" title="Quick Shop">
-        <i class="fa-solid fa-eye"></i>
+        <i class="fa-solid fa-eye fa-hover"></i>
       </a>
       <button type="button" class="btn btn-secondary" title="Add to Wishlist" onclick='addToFavorites(${
         product.id
       })'>
-      <i class="fa-solid fa-heart"></i>
+      <i class="fa-solid fa-heart fa-hover"></i>
       </button>
       <button type="button" class="btn btn-secondary" title="Add to Cart" onclick='addToCart(${
         product.id
       })'>
-        <i class="fa-solid fa-shopping-cart"></i>
+        <i class="fa-solid fa-shopping-cart fa-hover"></i>
       </button>
       </div>
   </div>
