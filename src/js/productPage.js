@@ -64,7 +64,7 @@ function getInnerHTML(productSelected) {
               </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-6">
               <p class="new-arrival text-center">NEW</p>
               <h2>${productSelected.title}</h2>
               <p>Product Code: ${'IRSC-' + productSelected.id + '-2023'}</p>

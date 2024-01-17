@@ -129,7 +129,7 @@ const handleLocation = async () => {
           cartData = apiProductList.filter(product => {
             return arrayOfProductIds.includes(product.id);
           });
-          createProductsInCart(cartData);
+          createProductsInCart(cartData, data.cartData);
 
           return;
         }
