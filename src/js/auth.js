@@ -71,8 +71,16 @@ const logout = () => {
   window.location.assign('/');
 };
 
-const addToCart = productId => {
+const addToCart = (productId, productQuantity = -1) => {
   const token = localStorage.getItem('token');
+  let bodyData =
+    productQuantity === -1
+      ? { itemId: productId }
+      : {
+          itemId: productId,
+          productQuantity: Number(productQuantity),
+        };
+  console.log(bodyData);
   if (token) {
     const addToCartDB = async () => {
       const response = await fetch(url + '/addtocart', {
@@ -82,11 +90,35 @@ const addToCart = productId => {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ itemId: productId }),
+        body: JSON.stringify(bodyData),
       });
       const data = await response.json();
     };
     addToCartDB();
+  } else {
+    window.location.assign('/login');
+  }
+};
+const removeFromCart = productId => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    const removeFromFavoritesDB = async () => {
+      const response = await fetch(url + '/removefromcart', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ itemId: productId }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        // document.getElementById('favorite-option').click();
+        document.getElementById(`productid-${productId}`).remove();
+      }
+    };
+    removeFromFavoritesDB();
   } else {
     window.location.assign('/login');
   }
@@ -126,7 +158,8 @@ const removeFromFavorites = productId => {
       });
       const data = await response.json();
       if (data.success) {
-        document.getElementById('favorite-option').click();
+        // document.getElementById('favorite-option').click();
+        document.getElementById(`productid-${productId}`).remove();
       }
     };
     removeFromFavoritesDB();
@@ -134,3 +167,24 @@ const removeFromFavorites = productId => {
     window.location.assign('/login');
   }
 };
+
+function changeProductSubTotal(id, selectedQuantity, priceWithDiscount) {
+  addToCart(id, selectedQuantity);
+  document.getElementById(`product-${id}-price`).innerHTML = `$${(
+    selectedQuantity * priceWithDiscount
+  ).toFixed(2)}`;
+  var Subtotalprice = 0;
+  var Subtotalitems = 0;
+  var priceArray = document.getElementsByClassName('cart-product-price');
+  var quantityArray = document.getElementsByTagName('select');
+  for (let i = 0; i < priceArray.length; i++) {
+    Subtotalprice += Number(priceArray[i].innerHTML.replace('$', ''));
+    console.log(quantityArray[i].value);
+    Subtotalitems += Number(quantityArray[i].value);
+  }
+
+  document.getElementById('total-price').innerHTML =
+    '$' + Subtotalprice.toFixed(2);
+  console.log(Subtotalitems);
+  document.getElementById('total-items').innerHTML = Subtotalitems;
+}

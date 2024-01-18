@@ -585,6 +585,7 @@ footer hr {
 }
 .cart-product-container img {
   width: 100%;
+  aspect-ratio: 1 / 1;
 }
 .cart-product-price,
 .cart-product-title {
@@ -596,6 +597,17 @@ footer hr {
   text-decoration: none;
   color: var(--text-color-dark);
   margin: 0rem !important;
+}
+.cart-select-container {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+}
+.cart-remove-btn {
+  margin-top: 1rem;
+  cursor: pointer;
+  font-weight: 600;
 }
 .cart-product-container select {
   align-self: center;

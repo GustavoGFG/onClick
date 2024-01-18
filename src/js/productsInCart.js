@@ -16,26 +16,20 @@ export function createProductsInCart(productList, productIdAndQuantityArray) {
       productQuantity
     ).toFixed(2);
     subtotalPrice += Number(productTotalPrice);
+    const priceWithDiscount =
+      product.price * (1 - product.discountPercentage / 100);
     cartProductsContainer.innerHTML += /*html*/ ` 
-    <div class="cart-product-container">
+    <div class="cart-product-container" id="productid-${product.id}">
       <a href="/product?id=${product.id}">
         <img src="${product.thumbnail}" alt="Nike Phanto Run" />
       </a>
       <a href="/product?id=${product.id}" class="cart-product-title">
         <p>${product.title}</p>
       </a>
-      <select name="" id="">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-      <p class="cart-product-price">$${(
-        product.price *
-        (1 - product.discountPercentage / 100) *
-        productQuantity
-      ).toFixed(2)}</p>
+      ${defineSelectedQuantity(productQuantity, product.id, priceWithDiscount)}
+      <p id="product-${product.id}-price" class="cart-product-price">$${(
+      priceWithDiscount * productQuantity
+    ).toFixed(2)}</p>
     </div>`;
   });
   const cartTotalContainer = document.getElementById('cart-total-container');
@@ -46,7 +40,7 @@ export function createProductsInCart(productList, productIdAndQuantityArray) {
     </div>
     <div class="checkout-info">
       <p>Total Price:</p>
-      <p id="total-price">$${subtotalPrice}</p>
+      <p id="total-price">$${subtotalPrice.toFixed(2)}</p>
     </div>
     <div class="checkout-info">
       <p>Shipping:</p>
@@ -55,4 +49,17 @@ export function createProductsInCart(productList, productIdAndQuantityArray) {
    <div class="checkout-btn-container">
      <button>CHECKOUT</button>
    </div>`;
+}
+
+function defineSelectedQuantity(quantity, productId, priceWithDiscount) {
+  var text = `<div class="cart-select-container"><select name="" id="" onchange="changeProductSubTotal(${productId}, this.value, ${priceWithDiscount})">`;
+  for (let i = 1; i < 6; i++) {
+    if (quantity == i) {
+      text += `<option value="${i}" selected>${i}</option>`;
+    } else {
+      text += `<option value="${i}" >${i}</option>`;
+    }
+  }
+  text += `</select><p class="cart-remove-btn" onclick="removeFromCart(${productId})">Remove</p></div>`;
+  return text;
 }
