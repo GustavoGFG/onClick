@@ -5,6 +5,7 @@ import { createMainPage } from './src/js/mainPage.js';
 import { createProductCard } from './src/js/productCard.js';
 import { createProductPage } from './src/js/productPage.js';
 import { createProductsInCart } from './src/js/productsInCart.js';
+import { renderYourOrders } from './src/js/yourOrders.js';
 
 const route = event => {
   event = event || window.event;
@@ -40,7 +41,6 @@ const handleLocation = async () => {
       return product.id == productId;
     })[0];
     if (!productSelected) {
-      console.log('Entrou');
       route = routes[404];
       pageNotFoud = true;
     }
@@ -65,7 +65,28 @@ const handleLocation = async () => {
     createCategoryPage(apiProductList, department);
   }
   if (window.location.pathname === '/profile') {
+    const getUser = async () => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        const response = await fetch(
+          'https://onclickstore-api.vercel.app/user',
+          {
+            method: 'GET',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        const data = await response.json();
+        document.getElementById('profile-name').innerHTML = data.user.firstName;
+      }
+    };
+    getUser();
+
     const favoriteOption = document.getElementById('favorite-option');
+    const yourOrdersOption = document.getElementById('yourorders-option');
 
     const showFavorite = () => {
       document.getElementById('profile-main-container').innerHTML =
@@ -101,6 +122,38 @@ const handleLocation = async () => {
       showFavoriteProducts();
     };
 
+    const showOrders = productList => {
+      document.getElementById('profile-main-container').innerHTML =
+        '<p id="profile-main-container-title" class="title-box"></p><div id="profile-main-product-container" class="container"></div>';
+      document.getElementById('profile-main-container-title').innerHTML =
+        'PURCHASE HISTORY';
+      const token = localStorage.getItem('token');
+      if (token) {
+        const getCheckoutHistory = async () => {
+          const response = await fetch(
+            'https://onclickstore-api.vercel.app/checkouthistory',
+            {
+              method: 'GET',
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          const data = await response.json();
+          if (data.success) {
+            renderYourOrders(productList, data.checkoutCart);
+            // return data.checkoutCart;
+          }
+        };
+        getCheckoutHistory();
+      }
+    };
+
+    yourOrdersOption.addEventListener('click', () =>
+      showOrders(apiProductList)
+    );
     favoriteOption.addEventListener('click', () =>
       showFavorite(apiProductList)
     );

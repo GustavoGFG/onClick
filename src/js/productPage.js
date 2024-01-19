@@ -14,6 +14,7 @@ export function createProductPage(productSelected) {
   createProductCard(filteredList, 'similar');
 }
 function getInnerHTML(productSelected) {
+  console.log(productSelected);
   let singleProductInnerHTML = ` <section class="single-product">
         <div class="container">
           <div class="row">
@@ -80,9 +81,8 @@ function getInnerHTML(productSelected) {
               <p><b>Condition:</b> New</p>
               <p><b>Brand:</b> ${productSelected.brand}</p>
               <div class="quantity-container">
-                <label>Quantity:</label>
-                <input type="number" value="1" />
-                <button type="button" class="btn btn-primary" onclick='addToCart(${
+                
+                <button type="button" class="btn btn-primary add-to-cart" onclick='addToCart(${
                   productSelected.id
                 })'>Add to Cart</button>
               <div>

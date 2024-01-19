@@ -58,7 +58,6 @@ const signup = () => {
 
 const checkLogin = () => {
   const token = localStorage.getItem('token');
-  console.log(token);
   if (token) {
     window.location.assign('/profile');
   } else {
@@ -80,7 +79,6 @@ const addToCart = (productId, productQuantity = -1) => {
           itemId: productId,
           productQuantity: Number(productQuantity),
         };
-  console.log(bodyData);
   if (token) {
     const addToCartDB = async () => {
       const response = await fetch(url + '/addtocart', {
@@ -99,6 +97,60 @@ const addToCart = (productId, productQuantity = -1) => {
     window.location.assign('/login');
   }
 };
+
+const checkout = () => {
+  const cart = {
+    checkoutCart: {
+      cartData: [],
+      // {id: 1, quantity: 1, price: 160 },
+      date: new Date().toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      }),
+      total: 0,
+    },
+  };
+  const allProducts = document.getElementsByClassName('cart-product-container');
+  if (allProducts.length > 0) {
+    for (let i = 0; i < allProducts.length; i++) {
+      var obj = { id: 0, quantity: 0, price: 0 };
+      obj.id = Number(allProducts[i].id.replace('productid-', ''));
+      obj.quantity = Number(
+        document.querySelector(`#productid-${obj.id} select`).value
+      );
+      obj.price = Number(
+        document
+          .querySelector(`#product-${obj.id}-price`)
+          .innerHTML.replace('$', '')
+      );
+      cart.checkoutCart.cartData.push(obj);
+      cart.checkoutCart.total += obj.price;
+    }
+    const token = localStorage.getItem('token');
+    if (token) {
+      const makeCheckout = async () => {
+        const response = await fetch(url + '/checkout', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(cart),
+        });
+        const data = await response.json();
+        // alert(data.message);
+        window.location.assign('/profile');
+        document.getElementById('yourorders-option').click();
+      };
+      makeCheckout();
+    }
+  } else {
+    alert('Add something to cart!');
+  }
+};
+
 const removeFromCart = productId => {
   const token = localStorage.getItem('token');
   if (token) {
@@ -179,12 +231,10 @@ function changeProductSubTotal(id, selectedQuantity, priceWithDiscount) {
   var quantityArray = document.getElementsByTagName('select');
   for (let i = 0; i < priceArray.length; i++) {
     Subtotalprice += Number(priceArray[i].innerHTML.replace('$', ''));
-    console.log(quantityArray[i].value);
     Subtotalitems += Number(quantityArray[i].value);
   }
 
   document.getElementById('total-price').innerHTML =
     '$' + Subtotalprice.toFixed(2);
-  console.log(Subtotalitems);
   document.getElementById('total-items').innerHTML = Subtotalitems;
 }

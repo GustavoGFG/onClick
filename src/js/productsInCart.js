@@ -47,7 +47,7 @@ export function createProductsInCart(productList, productIdAndQuantityArray) {
       <p>Free</p>
    </div>
    <div class="checkout-btn-container">
-     <button>CHECKOUT</button>
+     <button onclick="checkout()">CHECKOUT</button>
    </div>`;
 }
 

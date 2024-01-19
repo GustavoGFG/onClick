@@ -391,11 +391,16 @@ footer hr {
 .single-product .btn-primary {
   background: var(--original-color) !important;
   color: var(--default-color);
-  font-size: 1.5rem;
+  font-size: 2rem;
   border: none;
   box-shadow: none !important;
-  height: 3.3rem !important;
-  /* margin-top: -0.6rem; */
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  margin-top: 1.6rem;
+}
+.single-product .btn-primary:hover {
+  background-color: var(--primary-color-hover) !important;
 }
 /* PRODUCT DESCRIPTION */
 .product-description h6 {
@@ -520,7 +525,37 @@ footer hr {
 #cart-main-container-title,
 #profile-main-container-title {
   font-size: 3rem;
-  margin-bottom: 5rem;
+  margin-bottom: 5rem !important;
+}
+/* YOUR ORDERS */
+.purchase-container {
+  border-bottom: 2px solid var(--text-gray-color-darker);
+}
+.purchase-container:first-child {
+  border-top: 2px solid var(--text-gray-color-darker);
+}
+
+.purchase-date-total-container {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--text-gray-color-lighter);
+  border-bottom: 1px solid var(--text-gray-color-lighter);
+  padding: 1rem 2.5rem;
+}
+.purchase-date-total-container-box {
+  display: flex;
+  gap: 1rem;
+}
+
+.yourorders-information {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  text-align: center;
+  padding: 0 4rem;
+  border-top: 1px solid var(--text-gray-color-lighter);
+  border-bottom: 1px solid var(--text-gray-color-lighter);
+  font-weight: 600;
+  font-size: 1.8rem;
 }
 
 /*
@@ -609,7 +644,7 @@ footer hr {
   cursor: pointer;
   font-weight: 600;
 }
-.cart-product-container select {
+.cart-select-container select {
   align-self: center;
   justify-self: center;
   height: 2.8rem;
@@ -862,6 +897,16 @@ footer hr {
     margin: 0rem auto 1rem;
     font-weight: 600;
     font-size: 1.8rem;
+  }
+  .purchase-date-total-container {
+    padding: 1rem 1.5rem;
+  }
+  .purchase-date-total-container-box {
+    font-size: 1.6rem;
+  }
+  .yourorders-information {
+    padding: 0 1rem;
+    font-size: 1.6rem;
   }
   /* 
   ==================================
