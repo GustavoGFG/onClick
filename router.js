@@ -75,7 +75,7 @@ const handleLocation = async () => {
       const token = localStorage.getItem('token');
       const showFavoriteProducts = async () => {
         const response = await fetch(
-          'https://onclick.cyclic.app/allfavorites',
+          'https://onclickstore-api.vercel.app/allfavorites',
           {
             method: 'GET',
             headers: {
@@ -111,7 +111,7 @@ const handleLocation = async () => {
     if (token) {
       const fetchCart = async () => {
         const response = await fetch(
-          'https://onclick.cyclic.app/productsincart',
+          'https://onclickstore-api.vercel.app/productsincart',
           {
             method: 'GET',
             headers: {

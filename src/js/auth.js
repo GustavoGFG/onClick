@@ -1,4 +1,4 @@
-const url = 'https://onclick.cyclic.app';
+const url = 'https://onclickstore-api.vercel.app';
 
 const login = () => {
   var email = document.getElementById('sign-in-input__email').value;
