@@ -21,9 +21,7 @@ export function createProductCard(productList, sectionName) {
     ProductContainer.id = `productid-${product.id}`;
     ProductContainer.innerHTML += `
       <div class="product-top">
-      <img src="${
-        product.thumbnail
-      }" alt="" class="img-fluid" style="object-fit: cover"/>
+      <img src="${product.thumbnail}" alt="" class="img-fluid"/>
     <div class="overlay-right">
     <a href="/product?id=${product.id}" id='viewbutton-${
       product.id

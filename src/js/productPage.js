@@ -31,7 +31,6 @@ function getInnerHTML(productSelected) {
                       <img
                         src="${productSelected.thumbnail}"
                         class="d-block img-fluid w-100"
-                        style="object-fit: contain"
                         alt="..."
                       />
                     </div>
@@ -113,7 +112,6 @@ function createProductsImages(images) {
     <img
       src="${image}"
       class="d-block img-fluid w-100"
-      style="object-fit: contain"
       alt="..."
     />
   </div>
