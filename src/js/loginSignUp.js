@@ -75,7 +75,7 @@ export const logout = () => {
 export const getUser = async () => {
   const token = localStorage.getItem('token');
   if (token) {
-    const response = await fetch('https://onclickstore-api.vercel.app/user', {
+    const response = await fetch(url + '/user', {
       method: 'GET',
       headers: {
         Accept: 'application/json',

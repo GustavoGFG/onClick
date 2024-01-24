@@ -10,6 +10,7 @@ import {
   checkLogin,
   getUser,
   login,
+  logout,
   showFavorite,
   showOrders,
   signup,
@@ -92,6 +93,9 @@ const handleLocation = async () => {
     document
       .getElementById('yourorders-option')
       .addEventListener('click', () => showOrders(apiProductList));
+    document
+      .getElementById('logout-btn')
+      .addEventListener('click', () => logout);
   }
 
   if (window.location.pathname === '/cart') {
