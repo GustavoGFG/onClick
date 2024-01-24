@@ -1,75 +1,5 @@
 const url = 'https://onclickstore-api.vercel.app';
 
-const login = () => {
-  var email = document.getElementById('sign-in-input__email').value;
-  var password = document.getElementById('sign-in-input__password').value;
-
-  var loginData = { email, password };
-
-  const makeLogin = async () => {
-    const response = await fetch(url + '/login', {
-      method: 'POST',
-      headers: {
-        Accept: 'application.json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(loginData),
-    });
-    const data = await response.json();
-
-    if (data.success) {
-      localStorage.setItem('token', data.token);
-      window.location.assign('/');
-    } else {
-      alert(data.message);
-    }
-  };
-  makeLogin();
-};
-
-const signup = () => {
-  var firstName = document.getElementById('sign-up-input__first-name').value;
-  var lastName = document.getElementById('sign-up-input__last-name').value;
-  var email = document.getElementById('sign-up-input__email').value;
-  var password = document.getElementById('sign-up-input__password').value;
-
-  var signupData = { firstName, lastName, email, password };
-
-  const makeSignup = async () => {
-    response = await fetch(url + '/signup', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(signupData),
-    });
-    const data = await response.json();
-
-    if (data.success) {
-      localStorage.setItem('token', data.token);
-      window.location.assign('/');
-    } else {
-      alert(data.message);
-    }
-  };
-  makeSignup();
-};
-
-const checkLogin = () => {
-  const token = localStorage.getItem('token');
-  if (token) {
-    window.location.assign('/profile');
-  } else {
-    window.location.assign('/login');
-  }
-};
-
-const logout = () => {
-  localStorage.removeItem('token');
-  window.location.assign('/');
-};
-
 const addToCart = (productId, productQuantity = -1) => {
   const token = localStorage.getItem('token');
   let bodyData =
@@ -98,63 +28,10 @@ const addToCart = (productId, productQuantity = -1) => {
   }
 };
 
-const checkout = () => {
-  const cart = {
-    checkoutCart: {
-      cartData: [],
-      // {id: 1, quantity: 1, price: 160 },
-      date: new Date().toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-      }),
-      total: 0,
-    },
-  };
-  const allProducts = document.getElementsByClassName('cart-product-container');
-  if (allProducts.length > 0) {
-    for (let i = 0; i < allProducts.length; i++) {
-      var obj = { id: 0, quantity: 0, price: 0 };
-      obj.id = Number(allProducts[i].id.replace('productid-', ''));
-      obj.quantity = Number(
-        document.querySelector(`#productid-${obj.id} select`).value
-      );
-      obj.price = Number(
-        document
-          .querySelector(`#product-${obj.id}-price`)
-          .innerHTML.replace('$', '')
-      );
-      cart.checkoutCart.cartData.push(obj);
-      cart.checkoutCart.total += obj.price;
-    }
-    const token = localStorage.getItem('token');
-    if (token) {
-      const makeCheckout = async () => {
-        const response = await fetch(url + '/checkout', {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(cart),
-        });
-        const data = await response.json();
-        // alert(data.message);
-        window.location.assign('/profile');
-        document.getElementById('yourorders-option').click();
-      };
-      makeCheckout();
-    }
-  } else {
-    alert('Add something to cart!');
-  }
-};
-
 const removeFromCart = productId => {
   const token = localStorage.getItem('token');
   if (token) {
-    const removeFromFavoritesDB = async () => {
+    const removeFromCartDB = async () => {
       const response = await fetch(url + '/removefromcart', {
         method: 'POST',
         headers: {
@@ -168,9 +45,10 @@ const removeFromCart = productId => {
       if (data.success) {
         // document.getElementById('favorite-option').click();
         document.getElementById(`productid-${productId}`).remove();
+        changeProductSubTotal(productId, 0, 0);
       }
     };
-    removeFromFavoritesDB();
+    removeFromCartDB();
   } else {
     window.location.assign('/login');
   }
@@ -221,10 +99,12 @@ const removeFromFavorites = productId => {
 };
 
 function changeProductSubTotal(id, selectedQuantity, priceWithDiscount) {
-  addToCart(id, selectedQuantity);
-  document.getElementById(`product-${id}-price`).innerHTML = `$${(
-    selectedQuantity * priceWithDiscount
-  ).toFixed(2)}`;
+  if (selectedQuantity != 0) {
+    addToCart(id, selectedQuantity);
+    document.getElementById(`product-${id}-price`).innerHTML = `$${(
+      selectedQuantity * priceWithDiscount
+    ).toFixed(2)}`;
+  }
   var Subtotalprice = 0;
   var Subtotalitems = 0;
   var priceArray = document.getElementsByClassName('cart-product-price');
@@ -238,3 +118,4 @@ function changeProductSubTotal(id, selectedQuantity, priceWithDiscount) {
     '$' + Subtotalprice.toFixed(2);
   document.getElementById('total-items').innerHTML = Subtotalitems;
 }
+

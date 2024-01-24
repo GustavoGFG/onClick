@@ -39,7 +39,18 @@ export function createFavoriteProductCard(productList, sectionName) {
   
   
     <h3>${product.title}</h3>
-    <h5>$${product.price}</h5>
+    <div class="productcard-price-container">
+    <h5 ${
+      product.discountPercentage > 0 ? 'class="price-with-discount"' : ''
+    } >$${product.price.toFixed(2)}</h5>
+    ${
+      product.discountPercentage === 0
+        ? ''
+        : '<h5>$' +
+          (product.price * (1 - product.discountPercentage / 100)).toFixed(2) +
+          '</h5>'
+    }
+    </div>
     </div>
     `;
     document.querySelector(`#${sectionName}`).appendChild(ProductContainer);

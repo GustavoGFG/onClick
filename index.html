@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/css/style.css" />
 
+    <!-- STRIPE -->
+    <script src="https://js.stripe.com/v3/"></script>
+
     <!-- Font Awesome -->
     <script
       src="https://kit.fontawesome.com/53a00de455.js"
@@ -49,7 +52,7 @@
           >
             <i class="fa-solid fa-bars header__menu-icon"></i>
           </a>
-          <a class="header__btn shadow-sm" onclick="checkLogin()" role="button">
+          <a class="header__btn shadow-sm" id="profile-icon-btn" role="button">
             <i class="fa-solid fa-user header__login-icon"></i>
           </a>
           <a class="header__btn shadow-sm" href="/cart">

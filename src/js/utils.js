@@ -46,3 +46,5 @@ export function shuffle(array) {
 
   return array;
 }
+
+export const url = 'https://onclickstore-api.vercel.app';

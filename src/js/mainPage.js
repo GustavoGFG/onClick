@@ -2,7 +2,6 @@ import { createProductCard } from './productCard.js';
 import { shuffle } from './utils.js';
 
 export function createMainPage(productList) {
-  console.log(productList);
   let onSaleProducts = productList.filter(product => {
     return product.discountPercentage != 0;
   });

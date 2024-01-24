@@ -2,7 +2,7 @@ export function createProductsInCart(productList, productIdAndQuantityArray) {
   var cartProductsContainer = document.getElementById(
     'cart-products-container'
   );
-  cartProductsContainer.innerHTML = '';
+  cartProductsContainer.innerHTML = ``;
   var subtotalItems = 0;
   var subtotalPrice = 0;
   productList.forEach(product => {
@@ -47,8 +47,9 @@ export function createProductsInCart(productList, productIdAndQuantityArray) {
       <p>Free</p>
    </div>
    <div class="checkout-btn-container">
-     <button onclick="checkout()">CHECKOUT</button>
-   </div>`;
+     <button id="checkout-btn">CHECKOUT</button>
+   </div>
+   `;
 }
 
 function defineSelectedQuantity(quantity, productId, priceWithDiscount) {

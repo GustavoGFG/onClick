@@ -14,6 +14,8 @@
   --primary-color-light: rgb(244, 153, 155);
   /* --primary-color: #ee6769; */
   --primary-color: #e40205;
+  /* 200PX x 60PX */
+  /* 320PX x 100PX */
 
   --primary-color-dark: #e61b1d;
   --primary-color-darker: #880103;
@@ -370,11 +372,13 @@ footer hr {
   padding-bottom: 1.5rem;
 }
 .single-product .price-with-discount {
-  color: var(--text-gray-color-dark);
   font-size: 1.5rem;
-  text-decoration: line-through;
   padding: 0;
   margin: 0;
+}
+.price-with-discount {
+  text-decoration: line-through;
+  color: var(--text-gray-color);
 }
 .single-product .quantity-container {
   display: flex;
@@ -417,6 +421,11 @@ footer hr {
 .img-fluid {
   max-width: 100%;
   aspect-ratio: 1/1;
+}
+.productcard-price-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 /*----------WEBSITE FEATURES----------*/
 .title-404 {
