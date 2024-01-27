@@ -5,7 +5,11 @@ import {
 } from './src/js/cartBackend.js';
 import { createCategoryPage } from './src/js/categoryPage.js';
 import { createFavoriteProductCard } from './src/js/favoriteProductCard.js';
-import { apiProductList, subcategoryArray } from './src/js/fetchData.js';
+import {
+  apiProductList,
+  searchByWord,
+  subcategoryArray,
+} from './src/js/fetchData.js';
 import {
   checkLogin,
   getUser,
@@ -14,6 +18,8 @@ import {
   showFavorite,
   showOrders,
   signup,
+  validateInputs,
+  validateToSend,
 } from './src/js/loginSignUp.js';
 import { createMainPage } from './src/js/mainPage.js';
 import { createProductCard } from './src/js/productCard.js';
@@ -47,9 +53,23 @@ const handleLocation = async () => {
   let params = new URL(document.location).searchParams;
   let productId = params.get('id');
   let department = params.get('department');
+  let search = params.get('search');
   let session = params.get('session_id');
 
   let productSelected;
+
+  document
+    .getElementById('search-products-input-btn')
+    .addEventListener('click', e => {
+      e.preventDefault();
+      var searchedProduct = document
+        .getElementById('search-products-input')
+        .value.trim();
+      if (searchedProduct != '') {
+        window.location.assign(`/products?search=${searchedProduct}`);
+      }
+    });
+  // searchByWord
 
   document
     .getElementById('profile-icon-btn')
@@ -81,7 +101,12 @@ const handleLocation = async () => {
     createProductPage(productSelected);
   }
   if (window.location.pathname === '/products' && pageNotFoud == false) {
-    createCategoryPage(apiProductList, department);
+    if (department) {
+      createCategoryPage(apiProductList, department);
+    }
+    if (search) {
+      searchByWord(search);
+    }
   }
 
   if (window.location.pathname === '/profile') {
@@ -118,7 +143,12 @@ const handleLocation = async () => {
   }
 
   if (window.location.pathname === '/signup') {
-    document.getElementById('signup-btn').addEventListener('click', signup);
+    validateInputs();
+
+    // document.getElementById('signup-btn').addEventListener('click', signup);
+    document
+      .getElementById('signup-btn')
+      .addEventListener('click', validateToSend);
   }
 };
 

@@ -101,7 +101,7 @@ body {
   outline: none;
   width: 70%;
 }
-.form__submit-btn {
+#search-products-input-btn {
   margin-left: -0.4rem;
   border: none;
   background-color: var(--primary-color);
@@ -140,6 +140,28 @@ body {
   font-size: 2rem;
 }
 
+/* 
+======================
+     SIGN UP PAGE
+======================
+*/
+.form-control:focus {
+  box-shadow: none !important;
+}
+.invalid {
+  border: 1px solid red !important;
+}
+.input-error {
+  list-style: circle;
+  display: none;
+  color: red;
+  align-self: flex-start;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.show {
+  display: block;
+}
 /* 
 ======================
   PRODUCT CATEGORIES
@@ -777,6 +799,7 @@ footer hr {
   font-size: 1.8rem !important;
   padding: 1.2rem 0.8rem !important;
 }
+
 .log-in-container form p {
   margin-top: 0rem;
   padding: 0.5rem !important;
@@ -959,6 +982,9 @@ footer hr {
   }
   .checkout-btn-container button {
     font-size: 1.8rem;
+  }
+  .input-error {
+    font-size: 1.2rem;
   }
 }
 

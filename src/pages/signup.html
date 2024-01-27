@@ -3,38 +3,51 @@
     <h2>SIGN UP</h2>
     <div class="mb-3 login-input-container">
       <input
+        name="firstname"
         type="text"
         class="form-control login-input"
         id="sign-up-input__first-name"
         placeholder="First Name"
+        required
       />
     </div>
     <div class="mb-3 login-input-container">
       <input
+        name="lastname"
         type="text"
         class="form-control login-input"
         id="sign-up-input__last-name"
         placeholder="Last Name"
+        required
       />
     </div>
     <div class="mb-3 login-input-container">
       <input
+        name="email"
         type="email"
         class="form-control login-input"
         id="sign-up-input__email"
         placeholder="Email Address"
+        required
       />
     </div>
     <div class="mb-3 login-input-container">
       <input
+        name="password"
         type="password"
         class="form-control login-input"
         id="sign-up-input__password"
         placeholder="Password"
+        required
       />
     </div>
-
-    <button type="button" class="btn btn-primary" id="signup-btn">SIGN UP</button>
+    <span class="input-error" id="firstname-error"></span>
+    <span class="input-error" id="lastname-error"></span>
+    <span class="input-error" id="email-error"></span>
+    <span class="input-error" id="password-error"></span>
+    <button type="button" class="btn btn-primary" id="signup-btn">
+      SIGN UP
+    </button>
   </form>
 
   <div class="sign-up-container form-container shadow-sm">
