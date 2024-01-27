@@ -1,9 +1,10 @@
 import { createProductCard } from './productCard.js';
+import { url } from './utils.js';
 
 // let url = 'https://gustavodev.pythonanywhere.com/products';
-let url = 'https://onclickstore-api.vercel.app/allproducts';
+
 async function getProducts(url) {
-  let response = await fetch(url);
+  let response = await fetch(url + '/allproducts');
   let productListData = await response.json();
 
   return productListData;
@@ -19,7 +20,7 @@ apiProductList.map(product => {
 });
 
 export async function searchByWord(word) {
-  const response = await fetch('http://localhost:8000/searchproducts', {
+  const response = await fetch(url + '/searchproducts', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
