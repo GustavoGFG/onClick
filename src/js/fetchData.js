@@ -29,7 +29,10 @@ export async function searchByWord(word) {
   });
   const data = await response.json();
   if (data.products.length > 0) {
-    createProductCard(data.products, 'Results');
+    createProductCard(data.products, `Results`);
+    document
+      .getElementById('search-products-input')
+      .setAttribute('value', word);
   } else {
     document.getElementsByTagName(
       'main'
